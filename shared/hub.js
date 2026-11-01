@@ -34,7 +34,10 @@ function card(g){var x=g[L],p=MW.profile.get(),st=p.games&&p.games[g.id],has=!!M
     '<button type="button" class="more" aria-expanded="false">'+H.more+'</button><p class="desc" hidden>'+esc(x.desc)+'</p>'+
     /* één lijst: per zaak de gratis proefronde én de echte zaak */
     '<div class="acts"><a class="btn ghost try1" href="'+MW.root+esc(x.slug)+'?oefen">▶ '+H.try+'</a><a class="btn" href="'+MW.root+esc(x.slug)+'">'+(has?H.resume:H.play)+' →</a></div></article>'}
-function cases(){var el=$("#cases");el.innerHTML=C.games.filter(function(g){return g.status!=="soon"}).map(card).join("");
+function cases(){var el=$("#cases");el.innerHTML=C.games.filter(function(g){return g.status!=="soon"}).map(card).join("")+
+    /* laatste kaart: maatwerk */
+    '<article class="case maatcase"><div class="mc-ico" aria-hidden="true">✨</div><h3>'+esc(CF.card)+'</h3><p class="tag">'+esc(CF.cardT)+'</p><div class="acts"><a class="btn ghost" href="#custom">'+esc(CF.cardM)+'</a><button type="button" class="btn" data-mc>'+esc(CF.cardB)+' →</button></div></article>';
+  var mc=el.querySelector("[data-mc]");if(mc)mc.onclick=function(){customForm()};
   [].forEach.call(el.querySelectorAll(".more"),function(b){b.onclick=function(){var d=b.nextElementSibling,open=d.hidden;d.hidden=!open;b.textContent=open?H.less:H.more;b.setAttribute("aria-expanded",open)}})}
 
 /* ---------- vellen ---------- */
@@ -49,13 +52,13 @@ function privacy(){sheet('<div class="eyebrow">Privacy</div><h2>'+H.privH+'</h2>
 
 
 /* ---------- speurtocht op maat: formulier → mail ---------- */
-var CF={nl:{btn:"✉️ Op maat",h:"Speurtocht op maat",lead:"Vertel wat je in gedachten hebt. Het formulier opent je mailprogramma met alles al ingevuld; verstuur de mail en je hoort snel wat er kan. Prijs in overleg.",
+var CF={nl:{btn:"✨ Op maat",card:"Jullie eigen versie",cardT:"Elke zaak met foto's van de kinderen, hun namen en een thema: € 29,95 inclusief Feestpas. Iets helemaal nieuws? Vraag het aan.",cardB:"Vraag aan",cardM:"Meer weten",h:"Jullie eigen versie",lead:"Personaliseren met foto's, namen en een thema kost € 29,95 inclusief Feestpas; verhaal en puzzels blijven hetzelfde. Iets helemaal nieuws, zoals een eigen route of verhaal, vraag je hier ook aan; de prijs bepalen we samen. Het formulier opent je mailprogramma met alles al ingevuld; foto's voeg je daarna als bijlage toe.",
     name:"Je naam",email:"Je e-mailadres",kids:"Aantal kinderen",age:"Leeftijd",where:"Waar (adres of buurt)",when:"Wanneer (datum, of ongeveer)",kind:"Wat voor feest?",kinds:["Kinderfeestje","Schoolkamp of klas","Buurt- of straatfeest","Bedrijfs- of familie-uitje","Iets anders"],
-    wish:"Jullie wensen",wishP:"Bijvoorbeeld: een piratenthema, de namen van de kinderen in het verhaal, start bij ons huis, eindigen bij de speeltuin…",send:"✉️ Open de mail en verstuur",copy:"Lukt het mailen niet? Kopieer de tekst",copied:"Gekopieerd. Plak hem in een mail aan kellievandekerkhof@gmail.com.",need:"Vul in elk geval je naam en wat je wilt in.",
+    wish:"Jullie wensen",wishP:"Bijvoorbeeld: De Lichtjesdief personaliseren, de jarige heet Noor, thema verjaardag, foto's komen als bijlage…",send:"✉️ Open de mail en verstuur",copy:"Lukt het mailen niet? Kopieer de tekst",copied:"Gekopieerd. Plak hem in een mail aan kellievandekerkhof@gmail.com.",need:"Vul in elk geval je naam en wat je wilt in.",
     subj:"Speurtocht op maat via MiniMystery",hi:"Hoi Kellie,",intro:"Ik zoek een speurtocht op maat.",bye:"Groet,"},
-  en:{btn:"✉️ Custom",h:"A custom treasure hunt",lead:"Tell me what you have in mind. The form opens your mail app with everything filled in; send the email and you'll hear quickly what's possible. Price on request.",
+  en:{btn:"✨ Made to measure",card:"Your own version",cardT:"Any case with photos of the children, their names and a theme: € 29.95 incl. Party Pass. Something entirely new? Ask for it.",cardB:"Ask for one",cardM:"Find out more",h:"Your own version",lead:"Personalising with photos, names and a theme costs € 29.95 incl. Party Pass; story and puzzles stay the same. Something entirely new, like a route or story of your own, you can ask for here too; we'll agree the price together. The form opens your mail app with everything filled in; attach the photos afterwards.",
     name:"Your name",email:"Your email address",kids:"Number of children",age:"Age",where:"Where (address or neighbourhood)",when:"When (date, or roughly)",kind:"What kind of party?",kinds:["Kids' party","School trip or class","Street or neighbourhood party","Company or family outing","Something else"],
-    wish:"Your wishes",wishP:"For example: a pirate theme, the children's names in the story, start at our house, finish at the playground…",send:"✉️ Open the email and send",copy:"Email not working? Copy the text",copied:"Copied. Paste it into an email to kellievandekerkhof@gmail.com.",need:"At least fill in your name and what you want.",
+    wish:"Your wishes",wishP:"For example: personalise The Light Thief, the birthday girl is called Noor, birthday theme, photos attached…",send:"✉️ Open the email and send",copy:"Email not working? Copy the text",copied:"Copied. Paste it into an email to kellievandekerkhof@gmail.com.",need:"At least fill in your name and what you want.",
     subj:"Custom treasure hunt via MiniMystery",hi:"Hi Kellie,",intro:"I'm looking for a custom treasure hunt.",bye:"Kind regards,"}}[L];
 var MAIL="kellievandekerkhof@gmail.com",CFK="ss_mm_custom";
 function customForm(){var v=MW.LS.get(CFK,{});var f=function(id,lab,ph,type){return '<label class="cf"><span>'+lab+'</span><input type="'+(type||"text")+'" id="'+id+'" autocomplete="'+(id==="cfN"?"name":id==="cfE"?"email":"off")+'" value="'+esc(v[id]||"")+'"'+(ph?' placeholder="'+esc(ph)+'"':'')+'></label>'};

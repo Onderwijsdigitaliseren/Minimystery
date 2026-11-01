@@ -172,6 +172,16 @@ page("speurtocht-kinderfeestje-per-provincie.html",
    "Hieronder vind je per provincie meer uitleg en tips."],
   [], kind="overzicht")
 
+page("speurtocht-op-maat.html",
+  "Speurtocht op maat: gepersonaliseerd kinderfeestje | MiniMystery",
+  "Speurtocht op maat",
+  "Personaliseer een speurtocht voor het kinderfeestje, schoolkamp of de bso met foto's van de kinderen, hun namen en een thema voor € 29,95 inclusief Feestpas. Iets helemaal nieuws? Dien een aanvraag in.",
+  [], [], kind="maat",
+  faq=[("Wat kost personaliseren?", "€ 29,95 inclusief Feestpas per zaak. Daarvoor krijg je jullie eigen versie met foto's, namen en een thema."),
+       ("Kan de route ook anders?", "Bij personaliseren blijft de zaak zoals hij is. Een eigen route, verhaal of nieuwe puzzels is iets nieuws: dien daarvoor een aanvraag in, dan hoor je wat het kost."),
+       ("Kan ik daarna nog dingen veranderen?", "Je mag één keer iets laten aanpassen als je jullie versie gezien hebt. Daarna ligt hij vast."),
+       ("Hoe ver van tevoren moet ik aanvragen?", "Minimaal twee weken van tevoren. Voor iets helemaal nieuws liever langer.")])
+
 # ---------- opmaak ----------
 CSS = """
 .lp{max-width:860px;margin:0 auto;padding:0 16px 30px}
@@ -196,6 +206,7 @@ CSS = """
 .lp .rel{display:flex;flex-wrap:wrap;gap:8px}.lp .rel a{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:6px 12px;font:600 14px Nunito,sans-serif;color:var(--navy);text-decoration:none}
 .lp .prov{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}@media(max-width:620px){.lp .prov{grid-template-columns:1fr 1fr}}.lp .prov a{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px;text-align:center;font:600 16px Fredoka,sans-serif;color:var(--navy);text-decoration:none}
 .lp .custom{margin-top:8px}
+.lptop .lpk{display:flex;gap:8px}.lptop .lpk .btn.ghost{background:#fff}@media(max-width:460px){.lptop .lpk .btn.ghost{display:none}}
 .lptop{display:flex;align-items:center;justify-content:space-between;max-width:860px;margin:0 auto;padding:12px 16px}.lptop img{height:42px;width:auto;max-width:60vw}.lptop a.btn{padding:8px 14px;font-size:15px}
 """
 
@@ -231,14 +242,35 @@ def related(cur):
 
 def custom(region=None):
     subj = "Speurtocht op maat via MiniMystery" + (" (" + region + ")" if region else "")
-    body = "Hoi Kellie,%0A%0AIk zoek een speurtocht op maat.%0A%0AVoor wie en hoeveel kinderen: %0ALeeftijd: %0AWaar (adres of buurt): %0AWanneer: %0AWat ik in gedachten heb: %0A%0AGroet,%0A"
-    return ('<h2>Speurtocht op maat</h2><div class="custom"><p>Een speurtocht met de namen van de kinderen erin, rond jullie school of straat%s, voor een schoolkamp, buurtfeest of bedrijfsuitje? Mail wat je in gedachten hebt, dan hoor je snel wat er kan. Prijs in overleg.</p>'
-            '<a class="btn" href="mailto:%s?subject=%s&body=%s">✉️ Mail je idee</a></div>') % (
+    body = "Hoi Kellie,%0A%0AIk wil graag een speurtocht op maat.%0A%0APersonaliseren (€ 29,95) of iets helemaal nieuws: %0AWelke zaak: %0ANamen en leeftijd van de kinderen: %0AThema: %0AWanneer: %0AWensen: %0A%0A(Foto's stuur ik als bijlage mee.)%0A%0AGroet,%0A"
+    return ('<h2>Jullie eigen versie?</h2><div class="custom"><p>Elke zaak kan gepersonaliseerd worden met foto\'s van de kinderen, hun namen in het verhaal en een thema dat bij het feest past, voor € 29,95 inclusief Feestpas. Iets helemaal nieuws, zoals een eigen route langs jullie plekken%s of een eigen verhaal? Dien een aanvraag in, de prijs bepalen we samen.</p>'
+            '<a class="btn" href="mailto:%s?subject=%s&body=%s">✉️ Personaliseren of iets nieuws aanvragen</a><p class="note">Vraag minimaal twee weken van tevoren aan. <a href="speurtocht-op-maat.html">Meer over speurtochten op maat →</a></p></div>') % (
         (" in " + region) if region else "", MAIL, subj.replace(" ", "%20"), body)
+
+MAAT = dict(
+  gel=[("🎂 Kinderfeestje", "De jarige als held van het verhaal, met foto's van de vriendjes in het spel."),
+       ("🏕 Schoolkamp of klassenuitje", "Foto's van de klas en de juf of meester in de zaak."),
+       ("🏘 Buurt- of straatfeest", "De kinderen uit de straat als speurders, met het thema van jullie feest."),
+       ("🧸 Bso, club of vereniging", "Jullie groep en leiding in het verhaal, met jullie eigen logo op het diploma."),
+       ("🎄 Feestdagen", "Een zaak in kerst-, sinterklaas- of paassfeer, met jullie eigen foto's."),
+       ("🎁 Cadeau", "Een speurtocht met de naam en foto's van één kind, om samen te spelen.")])
+
+def maat_body():
+    b = []
+    b.append('<div class="intro"><p>Bij MiniMystery kun je elke zaak van jullie maken. Kies een van de zaken en personaliseer hem met foto\'s van de kinderen, hun namen in het verhaal en een thema dat bij het feest past. Dat kost € 29,95 inclusief Feestpas. Het verhaal en de puzzels blijven hetzelfde, dus het werkt altijd.</p>'
+             '<p>Wil je iets wat nog niet bestaat, zoals een eigen route langs jullie plekken, een eigen verhaal of een speurtocht voor een hele school? Dat kan ook: dien een aanvraag in en we bepalen samen de prijs.</p></div>')
+    b.append('<div class="cta2"><a class="btn" href="#aanvragen">Personaliseren of iets nieuws aanvragen</a><a class="btn ghost" href="index.html#cases">Eerst de zaken bekijken</a></div>')
+    b.append('<h2>Twee manieren</h2><div class="facts2"><div><b>📸 Personaliseren · € 29,95 incl. Feestpas</b><span>Foto\'s van de kinderen in het spel, hun namen in het verhaal, een thema (verjaardag, schoolkamp, kerst…) en een diploma met jullie foto\'s. Verhaal, puzzels en route blijven zoals ze zijn. Je mag één keer iets laten aanpassen; daarna ligt hij vast.</span></div>'
+             '<div><b>✨ Iets helemaal nieuws · op aanvraag</b><span>Een eigen route met start en finish, een eigen verhaal, nieuwe puzzels of een speurtocht voor een school, camping of vereniging. Dien een aanvraag in, de prijs bepalen we samen.</span></div></div>')
+    b.append('<h2>Waar het leuk voor is</h2><div class="facts2">' + "".join('<div><b>%s</b><span>%s</span></div>' % (e(x), e(y)) for x, y in MAAT["gel"]) + '</div>')
+    b.append('<h2>Zo werkt personaliseren</h2><ol class="st"><li><b>Kies een zaak</b>Mail welke zaak, de namen en leeftijd van de kinderen en welk thema.</li>'
+             '<li><b>Stuur de foto\'s mee</b>Als bijlage bij dezelfde mail.</li>'
+             '<li><b>Spelen maar</b>Je krijgt een eigen link, klaar voor het feest. Je mag één keer iets laten aanpassen.</li></ol>')
+    return b
 
 def render(p):
     url = SITE + p["slug"]
-    faq = p["faq"] + [("Wat kost het?", "Een zaak kost %s. Daarmee speel je die zaak twee maanden lang zo vaak je wilt. De proefronde is gratis." % PRICE),
+    faq = p["faq"] if p["kind"] == "maat" else p["faq"] + [("Wat kost het?", "Een zaak kost %s. Daarmee speel je die zaak twee maanden lang zo vaak je wilt. De proefronde is gratis." % PRICE),
                       ("Hoeveel kinderen kunnen meedoen?", FACTS_BASE[1][2])]
     ld = [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MiniMystery", "item": SITE}, {"@type": "ListItem", "position": 2, "name": p["h1"], "item": url}]}]
@@ -246,7 +278,9 @@ def render(p):
         ld.append({"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": G[k]["t"], "url": SITE + G[k]["slug"]} for i, k in enumerate(p["games"])]})
     body = []
     body.append('<div class="intro">' + "".join("<p>%s</p>" % e(x) for x in p["intro"]) + '</div>')
-    if p["kind"] == "overzicht":
+    if p["kind"] == "maat":
+        body.extend(maat_body())
+    elif p["kind"] == "overzicht":
         body.append('<div class="prov">' + "".join('<a href="%s">%s</a>' % (q["slug"], e(q["region"])) for q in P if q["kind"] == "regio") + '</div>')
     else:
         body.append(facts(p))
@@ -256,7 +290,7 @@ def render(p):
         body.append('<h2>Wat heb je nodig?</h2><ul class="ck">' + "".join("<li>%s</li>" % e(x) for x in NEED) + '</ul>')
         body.append('<h2>Zo werkt het</h2><ol class="st">' + "".join("<li><b>%s</b>%s</li>" % (e(a), e(b)) for a, b in STEPS) + '</ol>')
     body.append('<h2>Veelgestelde vragen</h2>' + "".join("<details><summary>%s</summary><p>%s</p></details>" % (e(q), e(a)) for q, a in faq))
-    body.append(custom(p["region"]))
+    body.append(custom(p["region"]) if p["kind"] != "maat" else '<div id="aanvragen"></div>' + custom().replace("<h2>Jullie eigen versie?</h2>", "<h2>Aanvragen</h2>").replace('<p class="note">Vraag minimaal twee weken van tevoren aan. <a href="speurtocht-op-maat.html">Meer over speurtochten op maat →</a></p>', '<p class="note">Vraag minimaal twee weken van tevoren aan. Voor iets helemaal nieuws liever langer.</p>'))
     body.append('<h2>Meer ideeën</h2>' + related(p))
     return """<!doctype html>
 <html lang="nl">
@@ -282,7 +316,7 @@ def render(p):
 <script type="application/ld+json">%(ld)s</script>
 </head>
 <body>
-<header class="lptop"><a href="index.html"><img src="assets/logo-wide.webp" alt="MiniMystery" width="1222" height="378"></a><a class="btn" href="index.html#cases">Alle zaken</a></header>
+<header class="lptop"><a href="index.html"><img src="assets/logo-wide.webp" alt="MiniMystery" width="1222" height="378"></a><span class="lpk"><a class="btn ghost" href="speurtocht-op-maat.html">✨ Op maat</a><a class="btn" href="index.html#cases">Alle zaken</a></span></header>
 <main class="lp">
 <div class="crumb"><a href="index.html">MiniMystery</a> › %(h1)s</div>
 <h1>%(h1)s</h1>
@@ -291,8 +325,8 @@ def render(p):
 <footer class="foot">
   <img src="assets/logo-mark-wink.webp" alt="" width="576" height="472" loading="lazy">
   <p>Gemaakt in Nederland, met liefde voor speurneuzen.</p>
-  <a class="adult" href="https://www.moordwandeling.nl/nl/">Voor volwassenen: Moordwandeling →</a>
-  <div class="links"><a href="mailto:%(mail)s">Contact</a><a href="speurtocht-kinderfeestje-per-provincie.html">Per provincie</a></div>
+  <a class="adult" href="https://www.enigmamystery.com/nl/wandelingen/">Voor volwassenen: Enigma Mystery →</a>
+  <div class="links"><a href="speurtocht-op-maat.html">Op maat</a><a href="mailto:%(mail)s">Contact</a><a href="speurtocht-kinderfeestje-per-provincie.html">Per provincie</a></div>
 </footer>
 </body>
 </html>
