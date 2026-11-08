@@ -16,6 +16,21 @@
   <url><loc>https://www.minimystery.nl/en/backstage-the-missing-setlist.html</loc><xhtml:link rel="alternate" hreflang="nl" href="https://www.minimystery.nl/backstage-de-verdwenen-setlist.html"/><xhtml:link rel="alternate" hreflang="en" href="https://www.minimystery.nl/en/backstage-the-missing-setlist.html"/></url>
   <url><loc>https://www.minimystery.nl/de-grote-kraak.html</loc><xhtml:link rel="alternate" hreflang="nl" href="https://www.minimystery.nl/de-grote-kraak.html"/><xhtml:link rel="alternate" hreflang="en" href="https://www.minimystery.nl/en/the-big-heist.html"/></url>
   <url><loc>https://www.minimystery.nl/en/the-big-heist.html</loc><xhtml:link rel="alternate" hreflang="nl" href="https://www.minimystery.nl/de-grote-kraak.html"/><xhtml:link rel="alternate" hreflang="en" href="https://www.minimystery.nl/en/the-big-heist.html"/></url>
+<url><loc>https://www.minimystery.nl/operatie-pakjesavond.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://www.minimystery.nl/en/operation-sinterklaas-eve.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/educatie/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/de-tijdreizigers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/professor-nul-en-de-verdwenen-cijfers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/de-letterdief.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/de-verdwenen-bijen.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/charlie-is-zijn-hond-kwijt.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/de-verdwenen-schoolklok.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/en/education/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/en/the-time-travellers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/en/professor-zero-and-the-missing-numbers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/en/the-letter-thief.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/en/the-missing-bees.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.minimystery.nl/en/the-missing-school-clock.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <url><loc>https://www.minimystery.nl/digitale-speurtocht-kinderfeestje.html</loc><!--lp--></url>
   <url><loc>https://www.minimystery.nl/detectivefeestje-kinderen.html</loc><!--lp--></url>
@@ -40,19 +55,4 @@
   <url><loc>https://www.minimystery.nl/speurtocht-kinderfeestje-zeeland.html</loc><!--lp--></url>
   <url><loc>https://www.minimystery.nl/speurtocht-kinderfeestje-per-provincie.html</loc><!--lp--></url>
   <url><loc>https://www.minimystery.nl/speurtocht-op-maat.html</loc><!--lp--></url>
-<url><loc>https://www.minimystery.nl/operatie-pakjesavond.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://www.minimystery.nl/en/operation-sinterklaas-eve.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/educatie/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/de-tijdreizigers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/professor-nul-en-de-verdwenen-cijfers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/de-letterdief.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/de-verdwenen-bijen.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/charlie-is-zijn-hond-kwijt.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/de-verdwenen-schoolklok.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/en/education/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/en/the-time-travellers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/en/professor-zero-and-the-missing-numbers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/en/the-letter-thief.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/en/the-missing-bees.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://www.minimystery.nl/en/the-missing-school-clock.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

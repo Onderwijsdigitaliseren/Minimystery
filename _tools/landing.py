@@ -12,6 +12,11 @@ e = html.escape
 
 # ---------- de spellen ----------
 G = {
+ "pa": dict(t="Operatie Pakjesavond", slug="operatie-pakjesavond.html", age=(6, 10), min="35–65", where="binnen of buiten",
+    badge="nieuw · speciaal voor 5 december",
+    tag="Piet Pepernoot is zijn verstopkaart kwijt. Verzamel de stukjes met Pietenproeven; de laatste aanwijzing leidt naar de pakjes die jij hebt verstopt.",
+    tasks=["Pepernoten tellen", "Strooigoed vangen met de schoen", "Schoenen-memory", "Over de daken rennen",
+           "De hoefslag van Ozosnel nakloppen", "Pietengeheimschrift ontcijferen"]),
  "sj": dict(t="De Lichtjesdief", slug="de-lichtjesdief.html", age=(6, 10), min="45–75", where="buiten of binnen",
     tag="Hij stal alle lichtjes van de straat. Vang hem op acht plekken en zie wie hij is.",
     tasks=["De Lichtjesdief vangen terwijl hij over het scherm flitst", "Met de zaklamp zijn schaduw vasthouden", "Raden wiens schaduw er op de muur staat",
@@ -53,8 +58,8 @@ def age_txt(a): return "%d tot %d jaar" % a
 
 # ---------- pagina's ----------
 P = []
-def page(slug, title, h1, desc, intro, games, facts=None, faq=None, extra="", kind="thema", region=None):
-    P.append(dict(slug=slug, title=title, h1=h1, desc=desc, intro=intro, games=games, facts=facts or {}, faq=faq or [], extra=extra, kind=kind, region=region))
+def page(slug, title, h1, desc, intro, games, facts=None, faq=None, extra="", kind="thema", region=None, lead=False):
+    P.append(dict(slug=slug, title=title, h1=h1, desc=desc, intro=intro, games=games, facts=facts or {}, faq=faq or [], extra=extra, kind=kind, region=region, lead=lead))
 
 ALLWALK = ["sj", "pp", "ag", "gl", "bs"]
 page("digitale-speurtocht-kinderfeestje.html",
@@ -101,18 +106,18 @@ page("indoor-speurtocht-kinderfeestje.html",
        ("Werkt het zonder internet?", "Je hebt internet nodig om de zaak te openen. Tijdens het spelen is weinig data nodig.")])
 # seizoen
 page("sinterklaas-speurtocht.html",
-  "Sinterklaas speurtocht voor kinderen: pakjesavond als mysterie | MiniMystery",
+  "Sinterklaas speurtocht voor kinderen: Operatie Pakjesavond | MiniMystery",
   "Sinterklaas speurtocht voor kinderen",
-  "Een speurtocht voor pakjesavond of het Sinterklaasfeest op school: de kinderen lossen een mysterie op en de laatste aanwijzing leidt naar de verstopte traktatie. 6 tot 10 jaar, € 9,99.",
-  ["Maak van pakjesavond een speurtocht. De kinderen lossen samen een mysterie op, binnen in de woonkamer of buiten in de buurt, en de laatste aanwijzing stuurt ze naar de plek waar jij iets lekkers of een surprise hebt verstopt.",
-   "Je hoeft niets voor te bereiden of te printen: de telefoon vertelt het verhaal, leest alles voor en geeft de opdrachten. Opa, oma en de jongste broertjes en zusjes kunnen gewoon meedoen.",
-   "Wil je echt een Sinterklaasthema, met de namen en foto's van jullie kinderen in het verhaal? Laat een zaak personaliseren. Vraag dat uiterlijk twee weken van tevoren aan, dus voor pakjesavond op 5 december vóór 21 november."],
-  ["sj", "ts", "ag", "pp"],
-  facts={"Leeftijd": "6 tot 10 jaar", "Waar": "Binnen in huis, in de tuin, of buiten in de buurt. In december is het vroeg donker: speel buiten vóór het eten, of binnen."},
-  faq=[("Kan het binnen, als het buiten donker en koud is?", "Ja. Elke zaak heeft een binnenstand, en De Betoverde Toverspiegel is helemaal voor binnen gemaakt. Buiten past De Lichtjesdief goed bij de donkere dagen: die draait om lichtjes en een zaklamp."),
-       ("Hoe komen de kinderen bij de verstopte traktatie?", "Via Feestopties kies je 'echte schat'. Na de ontmaskering krijgen de kinderen nog één laatste aanwijzing, die jij zelf invult: bijvoorbeeld achter de bank of in de schuur."),
-       ("Kan het op school of bij de bso?", "Ja. Speel met groepjes, elk groepje een telefoon met dezelfde zaakcode, en vergelijk aan het eind de teamstand. Voor een hele school kun je een speurtocht op maat aanvragen."),
-       ("Is er een zaak met de Sint erin?", "De zaken zelf hebben hun eigen verhaal. Met personaliseren (€ 29,95 inclusief Feestpas) krijgt een zaak een Sinterklaasthema met jullie namen en foto's.")])
+  "Operatie Pakjesavond: Piet Pepernoot is zijn verstopkaart kwijt. De kinderen verzamelen de stukjes met Pietenproeven en de laatste aanwijzing leidt naar de écht verstopte pakjes. 6 tot 10 jaar, € 9,99.",
+  ["Speciaal voor pakjesavond is er Operatie Pakjesavond. Piet Pepernoot heeft de pakjes voor jullie huis verstopt, maar zijn verstopkaart is in stukken gewaaid. In de kamers van het huis of buiten in de buurt ligt op elke plek een stukje, achter een Pietenproef: pepernoten tellen, strooigoed vangen met de schoen, de hoefslag van Ozosnel nakloppen.",
+   "Alle stukjes samen leiden naar de écht verstopte pakjes. Dat stel jij vooraf in achter de knop Hoofdpiet, met een pincode, zodat de kinderen niets zien: wat er ligt, een raadsel en de precieze plek. Eén plek voor alles, of per kind een eigen plek.",
+   "Je hoeft niets te printen: de telefoon vertelt het verhaal en leest alles voor. Kies Pepernoot (6 tot 7 jaar) of Hoofdpiet (8 tot 10 jaar), en kort, normaal of lang. Aan het eind is er een Speurpieten-diploma om te printen."],
+  ["pa", "sj", "ts", "ag", "pp"], lead=True,
+  facts={"Leeftijd": "6 tot 10 jaar", "Duur": "Operatie Pakjesavond: kort (6 stukjes, ongeveer 35 minuten), normaal (8 stukjes, 50 minuten) of lang (10 stukjes, 65 minuten).", "Aantal kinderen": "Gemaakt voor een gezin of klein groepje rond één telefoon. Per kind kun je een eigen verstopplek instellen.", "Waar": "Binnen in de kamers van het huis, of buiten in de buurt, met of zonder kaart. In december is het vroeg donker: speel buiten vóór het eten, of binnen."},
+  faq=[("Hoe komen de kinderen bij de verstopte pakjes?", "Je vult vooraf achter de knop Hoofdpiet in wat er ligt, een aanwijzing of raadsel, en de precieze plek. Een foto van de plek mag erbij. Na de laatste Pietenproef wordt de kaart omgedraaid en leest Piet de aanwijzing voor."),
+       ("Kan het binnen, als het buiten donker en koud is?", "Ja. Bij Operatie Pakjesavond kies je Binnen in huis: in elke kamer ligt een stukje van de verstopkaart en het spel zegt welke kamer."),
+       ("Kunnen jongere en oudere kinderen samen spelen?", "Ja. Kies het niveau dat bij de jongsten past. Bij Pepernoot wordt alles voorgelezen; Hoofdpiet is pittiger. Je kunt ook per kind een eigen verstopplek instellen."),
+       ("Kan het op school of bij de bso?", "Operatie Pakjesavond is gemaakt voor een gezin of klein groepje. Voor een klas of een hele school kun je een speurtocht op maat aanvragen.")])
 page("kerst-speurtocht-kinderen.html",
   "Kerst speurtocht voor kinderen en de hele familie | MiniMystery",
   "Kerst speurtocht voor kinderen",
@@ -239,9 +244,10 @@ CSS = """
 
 def game_card(k):
     g = G[k]
-    return ('<div class="gc"><img src="assets/cover-%s.webp" alt="" width="84" height="84" loading="lazy"><div><h3>%s</h3><p>%s</p>'
+    badge = ' <small style="color:#c8433e">%s</small>' % e(g["badge"]) if g.get("badge") else ""
+    return ('<div class="gc"><img src="assets/cover-%s.webp" alt="" width="84" height="84" loading="lazy"><div><h3>%s%s</h3><p>%s</p>'
             '<div class="m">%s · %s min · %s</div><div class="a"><a href="%s">Bekijk de zaak →</a><a href="%s?oefen">Gratis proefronde</a></div></div></div>') % (
-        k, e(g["t"]), e(g["tag"]), age_txt(g["age"]), g["min"], e(g["where"]), g["slug"], g["slug"])
+        k, e(g["t"]), badge, e(g["tag"]), age_txt(g["age"]), g["min"], e(g["where"]), g["slug"], g["slug"])
 
 def facts(p):
     gs = [G[k] for k in p["games"]] or list(G.values())
@@ -250,7 +256,7 @@ def facts(p):
     d = {"Leeftijd": "%d tot %d jaar" % (a0, a1), "Duur": "%d tot %d minuten, afhankelijk van de lengte die je kiest (5, 8 of 11 plekken)." % (min(mins), max(mins)),
          "Waar": "Buiten in je eigen buurt (met of zonder kaart) of binnen."}
     d.update(p["facts"])
-    rows = [("🎟", "Prijs", FACTS_BASE[0][2]), ("🎂", "Leeftijd", d["Leeftijd"]), ("⏱", "Duur", d["Duur"]), ("👧", "Aantal kinderen", FACTS_BASE[1][2]), ("📍", "Waar", d["Waar"])]
+    rows = [("🎟", "Prijs", FACTS_BASE[0][2]), ("🎂", "Leeftijd", d["Leeftijd"]), ("⏱", "Duur", d["Duur"]), ("👧", "Aantal kinderen", d.get("Aantal kinderen", FACTS_BASE[1][2])), ("📍", "Waar", d["Waar"])]
     if "Afstand" in d: rows.append(("👟", "Afstand", d["Afstand"]))
     return '<div class="facts2">' + "".join('<div><b>%s %s</b><span>%s</span></div>' % (i, e(t), e(v)) for i, t, v in rows) + '</div>'
 
@@ -311,7 +317,9 @@ def render(p):
         body.append('<div class="prov">' + "".join('<a href="%s">%s</a>' % (q["slug"], e(q["region"])) for q in P if q["kind"] == "regio") + '</div>')
     else:
         body.append(facts(p))
-        body.append('<div class="cta2"><a class="btn" href="index.html#cases">Kies een zaak</a><a class="btn ghost" href="%s?oefen">Eerst gratis proberen</a></div>' % G[p["games"][0]]["slug"])
+        g0 = G[p["games"][0]]
+        main = ('Speel ' + e(g0["t"]), g0["slug"]) if p.get("lead") else ("Kies een zaak", "index.html#cases")
+        body.append('<div class="cta2"><a class="btn" href="%s">%s</a><a class="btn ghost" href="%s?oefen">Eerst gratis proberen</a></div>' % (main[1], main[0], g0["slug"]))
         body.append('<h2>Welke zaak past?</h2><div class="gl">' + "".join(game_card(k) for k in p["games"]) + '</div>')
         body.append('<h2>Voorbeeldopdrachten</h2>' + examples(p))
         body.append('<h2>Wat heb je nodig?</h2><ul class="ck">' + "".join("<li>%s</li>" % e(x) for x in NEED) + '</ul>')
