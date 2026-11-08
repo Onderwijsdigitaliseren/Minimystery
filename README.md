@@ -32,3 +32,16 @@ Alles in `localStorage` onder `ss_*`, per domein. Wie Pro op moordwandeling.nl h
 
 ## Nieuwe zaak
 Spelmap in /games/<naam>/, twee shells (NL in de root, EN in /en/, paden met ../), één object in shared/catalog.js, cover in assets/cover-<id>.webp, twee regels in sitemap.xml.
+
+## MiniMystery Educatie: Engelse versies
+De educatieve wandelingen (tijd, reken, taal, natuur, klok) hebben een Engelse versie in `en/` (Charlie is NL-only: Engels voor Nederlandse kinderen).
+- Teksten van het spel staan in `games/<g>/data-en.js` (met de hand bijhouden naast `data-nl.js`).
+- `games/<g>/game-en.js` is **gegenereerd** uit `game.js`: na een wijziging in `game.js` draai je `python3 _tools/edu_en.py` (vertaalregels in `_tools/edu_en.json`; het script meldt wat nog Nederlands is).
+- De Engelse HTML-pagina's zijn **gegenereerd** uit de Nederlandse: `python3 _tools/edu_shell_en.py` (vertalingen in het script zelf; het meldt ontbrekende teksten).
+- Landing: `educatie/` (NL) en `en/education/` (EN).
+
+## Afdeling Educatie
+- Spellen met `"line": "educatie"` in `shared/catalog.js` staan niet op de feest-hub (index.html, en/), maar alleen in `educatie/` en `en/education/`. De feest-hub toont één verwijskaart "MiniMystery Educatie".
+- De terug-knop in de educatieve spellen gaat naar de afdeling Educatie.
+- Betaald (sinds 8 nov 2026): `FREE:false` in alle educatieve data-bestanden. Eén **Schoolpas** (€ 39,99, 183 dagen) opent alle educatieve wandelingen: code in codes.json met `"t":"feest","spel":"educatie","dagen":183` (maak hem in codes.html, optie "MiniMystery Educatie – Schoolpas"). Prijs en Ko-fi-link staan in `shared/platform.js` onder `CFG.edu`; de koopknop op `educatie/` en `en/education/` heeft `id="eduBuy"` (link invullen, `hidden` weghalen, `#eduSoon` weg). De proefronde blijft gratis. `"spel":"alle"` opent ze ook.
+- Plaatjes in de wandelingen worden meteen getoond (ook als ze nog laden) via `picTag()`; mislukt een plaatje, dan blijft de tekening/emoji staan.
