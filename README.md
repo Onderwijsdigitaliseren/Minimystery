@@ -60,3 +60,14 @@ Alle speurtochten op de wandelmotor (feestjes én educatie) hebben op het starts
 ## Hoofdpagina en Educatie-pagina (nieuwe indeling, 22 nov 2026)
 - `index.html` en `en/index.html`: de vaste tekst komt uit `python3 _tools/hub_body.py` (NL en EN in één script). De spelkaarten tekent `shared/hub.js` uit de catalogus: plaatje, titel, één zin (`short`), leeftijd (`age`), duur, speelwijzen (`ways`) en twee knoppen; de lange `desc` zit achter "Meer over dit spel". Filter "Hoe wil je spelen?" werkt op `ways`.
 - `educatie/` en `en/education/`: lege schil + `shared/edu.js` en `shared/edu.css`. Elke wandeling met `"line":"educatie"` wordt vanzelf een kaart (plaatje, vak `subj`, groep `grp`, één zin `short`), met filter per vak. `"status":"soon"` = grijze kaart "Binnenkort"; `"isNew":true` = lintje "Nieuw". **Nieuwe educatieve wandeling = één regel in `shared/catalog.js` + cover**, de pagina hoeft niet aangepast.
+
+## De Sommensprint (automatiseren, sinds 23 nov 2026, live sinds 23 nov 2026)
+- Eerste versie heette De Vergeetmist. Herzien na Kellies test: veel minder leestekst, geen mistverhaal, nadruk op oefenen.
+- `/de-sommensprint.html` + `games/vlot/` (id `vm`, zaakcode VM…, alleen NL). Zelfde motor en standen als de andere vak-wandelingen.
+- Verhaal in twee zinnen: de fiets van meneer Tik zit op slot; elke plek geeft één getal van de code.
+- Elke plek: één korte regel (`kort[niveau]`) → ronde 1 typen → even bewegen (`doe`) → ronde 2 goed of fout → ronde 3 kiezen → sterren → getal. `fl[niveau](r)` maakt één som of woordkeuze uit de seed; `rdItems` geeft de vorm per ronde.
+- Per ronde 5/6/8 sommen (`FLN`); in ronde 3 komen twee sommen van de vorige plek bij. Een foute som komt terug (maximaal drie keer). Sterren: 90% in één keer goed is drie, 70% twee, anders één. Niemand loopt vast.
+- Geen verdiepingsvragen in het spel. `truc`, `act`, `tip` en `more` staan alleen op het begeleidersblad (uitleg, beweegidee, weetje, napraatvragen).
+- Finale: de getallen (veelvouden van één tafel, `TAFELS` per niveau) van klein naar groot.
+- Klokkijken zit er bewust niet in (krijgt een eigen wandeling). Artwork compleet (23 nov 2026), lijst in `games/vlot/ARTWORK.md`.
+- Op live staat `shared/meer.js` alleen voor het begeleidersblad van De Sommensprint; de bonusvraag in de andere educatie-wandelingen staat nog alleen op test.
